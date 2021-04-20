@@ -13,6 +13,7 @@ var EmpleadoRouter = /** @class */ (function () {
     EmpleadoRouter.prototype.agregarRutas = function () {
         this.router.get('/empleados', EmpleadoControlador_1.default.getAll);
         this.router.get('/empleados/:legajo', EmpleadoControlador_1.default.getOne);
+        this.router.post('/empleados', EmpleadoControlador_1.default.create);
     };
     return EmpleadoRouter;
 }());

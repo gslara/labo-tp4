@@ -12,6 +12,9 @@ class Aplicacion{
 
     addRoutes(){
         this.application.use(empleadoRouter);
+        this.application.get('/', (request, response) => {
+            response.sendFile(`${__dirname}/index.html`)
+        });
     }
 }
 

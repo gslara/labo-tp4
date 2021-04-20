@@ -26,6 +26,10 @@ class EmpleadoControlador{
             console.error(error);
         }
     }
+
+    async create(req : Request, res : Response){
+        
+    }
 }
 
 const empleadoControlador = new EmpleadoControlador();

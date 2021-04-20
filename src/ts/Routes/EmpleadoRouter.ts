@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import Express,{Router} from 'express';
 import EmpleadoControlador from '../Controlador/EmpleadoControlador';
 
 class EmpleadoRouter{
@@ -12,6 +12,7 @@ class EmpleadoRouter{
     agregarRutas(){
         this.router.get('/empleados',EmpleadoControlador.getAll);
         this.router.get('/empleados/:legajo',EmpleadoControlador.getOne);
+        this.router.post('/empleados',EmpleadoControlador.create);
     }
 }
 

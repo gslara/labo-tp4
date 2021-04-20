@@ -13,6 +13,9 @@ var Aplicacion = /** @class */ (function () {
     }
     Aplicacion.prototype.addRoutes = function () {
         this.application.use(EmpleadoRouter_1.default);
+        this.application.get('/', function (request, response) {
+            response.sendFile(__dirname + "/index.html");
+        });
     };
     return Aplicacion;
 }());
