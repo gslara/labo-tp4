@@ -11,6 +11,7 @@ class EmpleadoRouter{
 
     agregarRutas(){
         this.router.get('/empleados',EmpleadoControlador.getAll);
+        this.router.get('/empleados/:legajo',EmpleadoControlador.getOne);
     }
 }
 

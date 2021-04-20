@@ -67,6 +67,30 @@ var EmpleadoControlador = /** @class */ (function () {
             });
         });
     };
+    EmpleadoControlador.prototype.getOne = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var conexion, empleado, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, MySQL_1.default.connect()];
+                    case 1:
+                        conexion = _a.sent();
+                        return [4 /*yield*/, conexion.query('SELECT * FROM empleados WHERE legajo = ?', req.params.legajo)];
+                    case 2:
+                        empleado = _a.sent();
+                        res.send(empleado);
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_2 = _a.sent();
+                        console.error(error_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     return EmpleadoControlador;
 }());
 var empleadoControlador = new EmpleadoControlador();
