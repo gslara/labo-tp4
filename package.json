@@ -15,7 +15,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "dev": "concurrently \"tsc --watch\" \"nodemon ./build/index.js\"",
+        "dev": "concurrently \"tsc --watch\" \"nodemon ./build/js/index.js\"",
         "build": "tsc"
     },
     "author": "",

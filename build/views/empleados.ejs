@@ -49,14 +49,13 @@
                                     <%= empleado.sector %>
                                 </td>
                                 <td>
-                                    <%= empleado.fecha_ingreso %>
+                                    <%= empleado.fecha_ingreso.toLocaleDateString() %>
                                 </td>
                                 <td>
                                     <%= empleado.activo ? 'SI' : 'NO' %>
                                 </td>
                                 <td class="d-flex justify-content-center">
-                                    <form class="mr-1" method="GET" action="/empleados/<%= empleado.legajo %>/modificar"
-                                        method="GET">
+                                    <form class="mr-1" method="GET" action="/empleados/<%= empleado.legajo %>/modificar" method="GET">
                                         <button class="btn btn-warning">M</button>
                                     </form>
                                     <form class="mr-1" action="/empleados/destroy" method="POST">

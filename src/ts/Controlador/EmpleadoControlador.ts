@@ -30,7 +30,7 @@ class EmpleadoControlador{
     }
 
     async crear(req: Request, res: Response) {
-        res.render('formulario');
+        res.render('formulario', {opcion: 'Crear', url:'crear', empleado: ''});
     }
 
     async modificar(req: Request, res: Response) {
@@ -41,26 +41,42 @@ class EmpleadoControlador{
                     'SELECT * FROM empleados WHERE legajo = ?',
                     req.params.legajo
                 );
-            res.render('formulario', { empleado: es[0], opcion: 'Modificar', url:'modificar' });
+            res.render('formulario', { empleado: es[0], opcion: 'Modificar', url:'update' });
         }catch(error){
             console.error(error);
         }
     }
 
     async create(req : Request, res : Response){
-        
+        try{
+            let conexion = await mySQL.connect();
+            let query = `INSERT INTO empleados VALUES(${req.body.Legajo},'${req.body.Apellido}','${req.body.Nombre}',${req.body.Dni},'${req.body.Sector}','${req.body.Fecha}',${req.body.Activo})`
+            await conexion.query(query);
+            conexion.release();
+        }catch(error){
+            console.error(error);
+        }
+
+        res.redirect('/empleados');
     }
 
     async update(req: Request, res: Response) {
-
+        try{
+            let conexion = await mySQL.connect();
+            let query = `UPDATE empleados SET legajo = ${req.body.Legajo}, apellido = '${req.body.Apellido}', nombre = '${req.body.Nombre}', dni = ${req.body.Dni}, sector = '${req.body.Sector}', fecha_ingreso = '${req.body.Fecha}', activo = ${req.body.Activo} WHERE legajo = ${req.body.Legajo}`;
+            let es = await conexion.query(query);
+            await conexion.release();
+            res.redirect('/empleados');
+        }catch(error){
+            console.error(error);
+        }
     }
 
     async borrar(req : Request, res : Response){
         try{
             let conexion = await mySQL.connect();
             console.log(req.body);
-            await conexion.query('DELETE FROM empleados WHERE legajo = ?',
-            req.body.legajo);
+            await conexion.query('DELETE FROM empleados WHERE legajo = ?', req.params.legajo);
             res.redirect('/empleados');
             conexion.release();
         }catch(error){

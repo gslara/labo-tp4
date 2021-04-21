@@ -25,19 +25,33 @@
                         <th>Activo</th>
                     </thead>
                     <tbody>
-                        <td><%= empleado.legajo %></td>
-                        <td><%= empleado.apellido %></td>
-                        <td><%= empleado.nombre %></td>
-                        <td><%= empleado.dni %></td>
-                        <td><%= empleado.sector %></td>
-                        <td><%= empleado.fechaIngreso %></td>
-                        <td><%= empleado.activo ? 'SI' : 'NO' %></td>
+                        <td>
+                            <%= empleado.legajo %>
+                        </td>
+                        <td>
+                            <%= empleado.apellido %>
+                        </td>
+                        <td>
+                            <%= empleado.nombre %>
+                        </td>
+                        <td>
+                            <%= empleado.dni %>
+                        </td>
+                        <td>
+                            <%= empleado.sector %>
+                        </td>
+                        <td>
+                            <%= empleado.fechaIngreso %>
+                        </td>
+                        <td>
+                            <%= empleado.activo ? 'SI' : 'NO' %>
+                        </td>
                     </tbody>
                 </table>
             </div>
-        <% }else{ %>
-            <h1 class="text-danger">No existe el empleado</h1>
-        <% } %>        
+            <% }else{ %>
+                <h1 class="text-danger">No existe el empleado</h1>
+                <% } %>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>    
+</body>

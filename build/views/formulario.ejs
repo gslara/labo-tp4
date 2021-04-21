@@ -13,36 +13,46 @@
 
 <body>
     <main>
-        <h1 class="text-center"><%= opcion %></h1>
+        <h1 class="text-center">
+            <%= opcion %>
+        </h1>
         <div class="container d-flex justify-content-center">
-            <form class="form" action="/empleados/<% url %>">
+            <form class="form" action="/empleados/<%= url %>" method="POST">
                 <div class="my-1">
-                    <input name="Legajo" class="form-control text-center" placeholder="Legajo" <% if(empleado){ %>
-                    value="<%= empleado.legajo %>" <% } %> >
+                    <input name="Legajo" class="form-control text-center" placeholder="Legajo" <% if(empleado){ %> value="
+                    <%= empleado.legajo %>"
+                        <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Apellido" class="form-control text-center" placeholder="Apellido" <% if(empleado){ %>
-                    value="<%= empleado.apellido %>" <% } %> >
+                    <input name="Apellido" class="form-control text-center" placeholder="Apellido" <% if(empleado){ %> value="
+                    <%= empleado.apellido %>"
+                        <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Nombre" class="form-control text-center" placeholder="Nombre" <% if(empleado){ %>
-                    value="<%= empleado.nombre %>" <% } %> >
+                    <input name="Nombre" class="form-control text-center" placeholder="Nombre" <% if(empleado){ %> value="
+                    <%= empleado.nombre %>"
+                        <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Dni" class="form-control text-center" placeholder="Dni" <% if(empleado){ %> value="<%=
-                        empleado.dni %>" <% } %> >
+                    <input name="Dni" class="form-control text-center" placeholder="Dni" <% if(empleado){ %> value="
+                    <%=
+                        empleado.dni %>"
+                        <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Sector" class="form-control text-center" placeholder="Sector" <% if(empleado){ %>
-                    value="<%= empleado.sector %>" <% } %> >
+                    <input name="Sector" class="form-control text-center" placeholder="Sector" <% if(empleado){ %> value="
+                    <%= empleado.sector %>"
+                        <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Fecha" class="form-control text-center" placeholder="Fecha" <% if(empleado){ %> value="
-                    <%= empleado.fecha_ingreso %>" <% } %> >
+                    <input name="Fecha" type="date" class="form-control text-center" placeholder="Fecha" <% if(empleado){ %> value="
+                    <%= empleado.fecha_ingreso %>"
+                        <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Activo" class="form-control text-center" placeholder="Activo" <% if(empleado){ %>
-                    value="<%= empleado.activo %>" <% } %> >
+                    <input name="Activo" class="form-control text-center" placeholder="Activo" <% if(empleado){ %> value="
+                    <%= empleado.activo %>"
+                        <% } %> >
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success">
