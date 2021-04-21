@@ -39,25 +39,9 @@ class EmpleadoControlador{
             let es =
                 await conexion.query(
                     'SELECT * FROM empleados WHERE legajo = ?',
-                    req.body.legajo
+                    req.params.legajo
                 );
-            if(es){
-                es.render('formulario', { empleado: es, opcion: 'Modificar' });
-                let Legajo = document.getElementsByName('Legajo');
-                let Apellido = document.getElementsByName('Apellido');
-                let Nombre = document.getElementsByName('Nombre');
-                let Dni = document.getElementsByName('Dni');
-                let Sector = document.getElementsByName('Sector');
-                let Fecha = document.getElementsByName('Fecha');
-                let Activo = document.getElementsByName('Activo');
-                console.log(Legajo);
-                console.log(Apellido);
-                console.log(Nombre);
-                console.log(Dni);
-                console.log(Sector);
-                console.log(Fecha);
-                console.log(Activo);
-            }
+            res.render('formulario', { empleado: es[0], opcion: 'Modificar', url:'modificar' });
         }catch(error){
             console.error(error);
         }
