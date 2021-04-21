@@ -1,6 +1,6 @@
 export default {
     host: 'localhost',
-    user: 'laboiv',
-    password: 'laboiv',
+    user: 'root',
+    password: '',
     database: 'db_laboiv'
 }

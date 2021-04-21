@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     host: 'localhost',
-    user: 'laboiv',
-    password: 'laboiv',
+    user: 'root',
+    password: '',
     database: 'db_laboiv'
 };
