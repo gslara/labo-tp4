@@ -39,35 +39,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var promise_mysql_1 = __importDefault(require("promise-mysql"));
-var MySQL_1 = __importDefault(require("../Config/MySQL"));
-var MySQL = /** @class */ (function () {
-    function MySQL() {
-        this.crearPool();
-    }
-    MySQL.prototype.crearPool = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, promise_mysql_1.default.createPool(MySQL_1.default)];
-                    case 1:
-                        _a.pool = _b.sent();
-                        return [2 /*return*/];
-                }
-            });
+var node_fetch_1 = __importDefault(require("node-fetch"));
+function cargarDatosAPI() {
+    return __awaiter(this, void 0, void 0, function () {
+        var cargar, empleados, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, node_fetch_1.default('https://pokeapi.co/api/v2/pokemon/ditto')];
+                case 1:
+                    cargar = _a.sent();
+                    return [4 /*yield*/, cargar.text()];
+                case 2:
+                    empleados = _a.sent();
+                    console.log(empleados);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
         });
-    };
-    MySQL.prototype.connect = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.pool.getConnection()];
-            });
-        });
-    };
-    return MySQL;
-}());
-var mySQL = new MySQL();
-exports.default = mySQL;
+    });
+}

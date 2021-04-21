@@ -39,54 +39,60 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var MySQL_1 = __importDefault(require("../Datos/MySQL"));
+var MySQL_js_1 = __importDefault(require("../Datos/MySQL.js"));
 var EmpleadoControlador = /** @class */ (function () {
     function EmpleadoControlador() {
     }
     EmpleadoControlador.prototype.getAll = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, empleados, error_1;
+            var conexion, es, error_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, MySQL_1.default.connect()];
+                        _a.trys.push([0, 4, , 5]);
+                        return [4 /*yield*/, MySQL_js_1.default.connect()];
                     case 1:
                         conexion = _a.sent();
                         return [4 /*yield*/, conexion.query('SELECT * FROM empleados')];
                     case 2:
-                        empleados = _a.sent();
-                        res.send(empleados);
-                        return [3 /*break*/, 4];
+                        es = _a.sent();
+                        return [4 /*yield*/, res.render('empleados', { empleados: es })];
                     case 3:
+                        _a.sent();
+                        conexion.release();
+                        return [3 /*break*/, 5];
+                    case 4:
                         error_1 = _a.sent();
                         console.error(error_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
     };
     EmpleadoControlador.prototype.getOne = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, empleado, error_2;
+            var conexion, es, error_2;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, MySQL_1.default.connect()];
+                        _a.trys.push([0, 4, , 5]);
+                        return [4 /*yield*/, MySQL_js_1.default.connect()];
                     case 1:
                         conexion = _a.sent();
                         return [4 /*yield*/, conexion.query('SELECT * FROM empleados WHERE legajo = ?', req.params.legajo)];
                     case 2:
-                        empleado = _a.sent();
-                        res.send(empleado);
-                        return [3 /*break*/, 4];
+                        es = _a.sent();
+                        return [4 /*yield*/, res.render('empleado', { empleado: es[0] })];
                     case 3:
+                        _a.sent();
+                        conexion.release();
+                        return [3 /*break*/, 5];
+                    case 4:
                         error_2 = _a.sent();
                         console.error(error_2);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        return [3 /*break*/, 5];
+                    case 5: return [2 /*return*/];
                 }
             });
         });
@@ -95,6 +101,33 @@ var EmpleadoControlador = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/];
+            });
+        });
+    };
+    EmpleadoControlador.prototype.borrar = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var conexion, consulta, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, 4, 5]);
+                        return [4 /*yield*/, MySQL_js_1.default.connect()];
+                    case 1:
+                        conexion = _a.sent();
+                        return [4 /*yield*/, conexion.query('DELETE FROM empleados WHERE legajo = ?', req.params.legajo)];
+                    case 2:
+                        consulta = _a.sent();
+                        conexion.release();
+                        return [3 /*break*/, 5];
+                    case 3:
+                        error_3 = _a.sent();
+                        console.error(error_3);
+                        return [3 /*break*/, 5];
+                    case 4:
+                        res.redirect('/');
+                        return [7 /*endfinally*/];
+                    case 5: return [2 /*return*/];
+                }
             });
         });
     };
