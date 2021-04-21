@@ -1,6 +1,6 @@
 import _MySQL from 'promise-mysql';
 import Bluebird from 'bluebird';
-import config from '../Config/MySQL';
+import config from '../Config/MySQL.js';
 
 class MySQL{
 

@@ -1,5 +1,7 @@
 import Express, { Application } from 'express';
-import empleadoRouter from './Routes/EmpleadoRouter';
+import empleadoRouter from './Routes/EmpleadoRouter.js';
+import path from 'path';
+import bodyparser from 'body-parser';
 
 class Aplicacion{
     application : Application
@@ -7,13 +9,17 @@ class Aplicacion{
     constructor(){
         this.application = Express();
         this.application.listen(3000);
+        this.application.set('view engine', 'ejs');
+        this.application.set('views',path.resolve('build/views'));
+        this.application.use(bodyparser.json());
+        this.application.use(bodyparser.urlencoded({ extended: true }));
         this.addRoutes();
     }
 
     addRoutes(){
         this.application.use(empleadoRouter);
-        this.application.get('/', (request, response) => {
-            response.sendFile(`${__dirname}/index.html`)
+        this.application.get('/',(req, res)=>{
+            res.render('index');
         });
     }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <title>
+        <%= opcion %>
+    </title>
+</head>
+
+<body>
+    <main>
+        <h1 class="text-center">Clases</h1>
+        <div class="container d-flex justify-content-center">
+            <form class="form" action="/empleados/<% url %>">
+                <div>
+                    <input name="Legajo" class="form-control text-center" placeholder="Legajo">
+                </div>
+                <div>
+                    <input name="Apellido" class="form-control text-center" placeholder="Apellido">
+                </div>
+                <div>
+                    <input name="Nombre" class="form-control text-center" placeholder="Nombre">
+                </div>
+                <div>
+                    <input name="Dni" class="form-control text-center" placeholder="Dni">
+                </div>
+                <div>
+                    <input name="Sector" class="form-control text-center" placeholder="Sector">
+                </div>
+                <div>
+                    <input name="Fecha" class="form-control text-center" placeholder="Fecha">
+                </div>
+                <div>
+                    <input name="Activo" class="form-control text-center" placeholder="Activo">
+                </div>
+                <button class="btn btn-success">
+                    <%= opcion %>
+                </button>
+            </form>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

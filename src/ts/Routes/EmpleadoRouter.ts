@@ -1,5 +1,5 @@
 import Express,{Router} from 'express';
-import EmpleadoControlador from '../Controlador/EmpleadoControlador';
+import EmpleadoControlador from '../Controlador/EmpleadoControlador.js';
 
 class EmpleadoRouter{
     router : Router;
@@ -12,7 +12,11 @@ class EmpleadoRouter{
     agregarRutas(){
         this.router.get('/empleados',EmpleadoControlador.getAll);
         this.router.get('/empleados/:legajo',EmpleadoControlador.getOne);
+        this.router.get('/crear',EmpleadoControlador.crear);
+        this.router.get('/empleados/:legajo/modificar', EmpleadoControlador.modificar);
+        this.router.post('/empleados/destroy',EmpleadoControlador.borrar);
         this.router.post('/empleados',EmpleadoControlador.create);
+        this.router.post('/empleados/update', EmpleadoControlador.update);
     }
 }
 

@@ -39,66 +39,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var MySQL_1 = __importDefault(require("../Datos/MySQL"));
-var EmpleadoControlador = /** @class */ (function () {
-    function EmpleadoControlador() {
+var promise_mysql_1 = __importDefault(require("promise-mysql"));
+var MySQL_js_1 = __importDefault(require("../Config/MySQL.js"));
+var MySQL = /** @class */ (function () {
+    function MySQL() {
+        this.crearPool();
     }
-    EmpleadoControlador.prototype.getAll = function (req, res) {
+    MySQL.prototype.crearPool = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, empleados, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, MySQL_1.default.connect()];
+                        _a = this;
+                        return [4 /*yield*/, promise_mysql_1.default.createPool(MySQL_js_1.default)];
                     case 1:
-                        conexion = _a.sent();
-                        return [4 /*yield*/, conexion.query('SELECT * FROM empleados')];
-                    case 2:
-                        empleados = _a.sent();
-                        res.send(empleados);
-                        return [3 /*break*/, 4];
-                    case 3:
-                        error_1 = _a.sent();
-                        console.error(error_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+                        _a.pool = _b.sent();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    EmpleadoControlador.prototype.getOne = function (req, res) {
+    MySQL.prototype.connect = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, empleado, error_2;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, MySQL_1.default.connect()];
-                    case 1:
-                        conexion = _a.sent();
-                        return [4 /*yield*/, conexion.query('SELECT * FROM empleados WHERE legajo = ?', req.params.legajo)];
-                    case 2:
-                        empleado = _a.sent();
-                        res.send(empleado);
-                        return [3 /*break*/, 4];
-                    case 3:
-                        error_2 = _a.sent();
-                        console.error(error_2);
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
-                }
+                return [2 /*return*/, this.pool.getConnection()];
             });
         });
     };
-    EmpleadoControlador.prototype.create = function (req, res) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/];
-            });
-        });
-    };
-    return EmpleadoControlador;
+    return MySQL;
 }());
-var empleadoControlador = new EmpleadoControlador();
-exports.default = empleadoControlador;
+var mySQL = new MySQL();
+exports.default = mySQL;
