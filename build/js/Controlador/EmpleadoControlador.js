@@ -100,7 +100,7 @@ var EmpleadoControlador = /** @class */ (function () {
     EmpleadoControlador.prototype.crear = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                res.render('formulario');
+                res.render('formulario', { opcion: 'Crear', url: 'crear', empleado: '' });
                 return [2 /*return*/];
             });
         });
@@ -131,14 +131,34 @@ var EmpleadoControlador = /** @class */ (function () {
     };
     EmpleadoControlador.prototype.create = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
+            var conexion, query, error_4;
             return __generator(this, function (_a) {
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, MySQL_js_1.default.connect()];
+                    case 1:
+                        conexion = _a.sent();
+                        query = "INSERT INTO empleados VALUES(" + req.body.Legajo + ", '" + req.body.Apellido + "', '" + req.body.Nombre + "', " + req.body.Dni + ", '" + req.body.Sector + "', " + req.body.Fecha + ", " + req.body.Activo + ")";
+                        return [4 /*yield*/, conexion.query(query)];
+                    case 2:
+                        _a.sent();
+                        conexion.release();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_4 = _a.sent();
+                        console.error(error_4);
+                        return [3 /*break*/, 4];
+                    case 4:
+                        res.redirect('/empleados');
+                        return [2 /*return*/];
+                }
             });
         });
     };
     EmpleadoControlador.prototype.update = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, query, es, error_4;
+            var conexion, query, es, error_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -146,8 +166,7 @@ var EmpleadoControlador = /** @class */ (function () {
                         return [4 /*yield*/, MySQL_js_1.default.connect()];
                     case 1:
                         conexion = _a.sent();
-                        console.log(req.body.Legajo);
-                        query = "UPDATE empleados SET legajo = " + req.body.Legajo + ", apellido = '" + req.body.Apellido + "', nombre = '" + req.body.Nombre + "', dni = " + req.body.Dni + ", sector = '" + req.body.Sector + "', fecha_ingreso = NULL, activo = " + req.body.Activo + " WHERE legajo = " + req.body.Legajo;
+                        query = "UPDATE empleados SET legajo = " + req.body.Legajo + ", apellido = '" + req.body.Apellido + "', nombre = '" + req.body.Nombre + "', dni = " + req.body.Dni + ", sector = '" + req.body.Sector + "', fecha_ingreso = '" + req.body.Fecha + "', activo = " + req.body.Activo + " WHERE legajo = " + req.body.Legajo;
                         return [4 /*yield*/, conexion.query(query)];
                     case 2:
                         es = _a.sent();
@@ -157,8 +176,8 @@ var EmpleadoControlador = /** @class */ (function () {
                         res.redirect('/empleados');
                         return [3 /*break*/, 5];
                     case 4:
-                        error_4 = _a.sent();
-                        console.error(error_4);
+                        error_5 = _a.sent();
+                        console.error(error_5);
                         return [3 /*break*/, 5];
                     case 5: return [2 /*return*/];
                 }
@@ -167,7 +186,7 @@ var EmpleadoControlador = /** @class */ (function () {
     };
     EmpleadoControlador.prototype.borrar = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, error_5;
+            var conexion, error_6;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -183,8 +202,8 @@ var EmpleadoControlador = /** @class */ (function () {
                         conexion.release();
                         return [3 /*break*/, 5];
                     case 3:
-                        error_5 = _a.sent();
-                        console.error(error_5);
+                        error_6 = _a.sent();
+                        console.error(error_6);
                         return [3 /*break*/, 5];
                     case 4: return [7 /*endfinally*/];
                     case 5: return [2 /*return*/];

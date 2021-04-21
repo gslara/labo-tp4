@@ -37,8 +37,7 @@
                     value="<%= empleado.sector %>" <% } %> >
                 </div>
                 <div class="my-1">
-                    <input name="Fecha" class="form-control text-center" placeholder="Fecha" <% if(empleado){ %> value="
-                    <%= empleado.fecha_ingreso %>" <% } %> >
+                    <input name="Fecha" type="date" class="form-control text-center" placeholder="Fecha" <% if(empleado){ %> value="<%= empleado.fecha_ingreso %>"<% } %> >
                 </div>
                 <div class="my-1">
                     <input name="Activo" class="form-control text-center" placeholder="Activo" <% if(empleado){ %>
