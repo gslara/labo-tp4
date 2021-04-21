@@ -15,7 +15,7 @@ var EmpleadoRouter = /** @class */ (function () {
         this.router.get('/empleados/:legajo', EmpleadoControlador_js_1.default.getOne);
         this.router.get('/crear', EmpleadoControlador_js_1.default.crear);
         this.router.get('/empleados/:legajo/modificar', EmpleadoControlador_js_1.default.modificar);
-        this.router.post('/empleados/destroy', EmpleadoControlador_js_1.default.borrar);
+        this.router.post('/empleados/:legajo/destroy', EmpleadoControlador_js_1.default.borrar);
         this.router.post('/empleados/crear', EmpleadoControlador_js_1.default.create);
         this.router.post('/empleados/update', EmpleadoControlador_js_1.default.update);
     };

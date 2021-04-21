@@ -37,10 +37,7 @@ class EmpleadoControlador{
         try{
             let conexion = await mySQL.connect();
             let es =
-                await conexion.query(
-                    'SELECT * FROM empleados WHERE legajo = ?',
-                    req.params.legajo
-                );
+                await conexion.query('SELECT * FROM empleados WHERE legajo = ?',req.params.legajo);
             res.render('formulario', { empleado: es[0], opcion: 'Modificar', url:'update' });
         }catch(error){
             console.error(error);
@@ -75,7 +72,7 @@ class EmpleadoControlador{
     async borrar(req : Request, res : Response){
         try{
             let conexion = await mySQL.connect();
-            console.log(req.body);
+            console.log(req.params.legajo);
             await conexion.query('DELETE FROM empleados WHERE legajo = ?', req.params.legajo);
             res.redirect('/empleados');
             conexion.release();

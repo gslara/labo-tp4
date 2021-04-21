@@ -14,7 +14,7 @@ class EmpleadoRouter{
         this.router.get('/empleados/:legajo',EmpleadoControlador.getOne);
         this.router.get('/crear',EmpleadoControlador.crear);
         this.router.get('/empleados/:legajo/modificar', EmpleadoControlador.modificar);
-        this.router.post('/empleados/destroy',EmpleadoControlador.borrar);
+        this.router.post('/empleados/:legajo/destroy',EmpleadoControlador.borrar);
         this.router.post('/empleados/crear',EmpleadoControlador.create);
         this.router.post('/empleados/update', EmpleadoControlador.update);
     }

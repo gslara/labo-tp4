@@ -194,7 +194,7 @@ var EmpleadoControlador = /** @class */ (function () {
                         return [4 /*yield*/, MySQL_js_1.default.connect()];
                     case 1:
                         conexion = _a.sent();
-                        console.log(req.body);
+                        console.log(req.params.legajo);
                         return [4 /*yield*/, conexion.query('DELETE FROM empleados WHERE legajo = ?', req.params.legajo)];
                     case 2:
                         _a.sent();

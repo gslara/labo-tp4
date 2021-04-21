@@ -58,7 +58,7 @@
                                     <form class="mr-1" method="GET" action="/empleados/<%= empleado.legajo %>/modificar" method="GET">
                                         <button class="btn btn-warning">M</button>
                                     </form>
-                                    <form class="mr-1" action="/empleados/destroy" method="POST">
+                                    <form class="mr-1" action="/empleados/<%= empleado.legajo %>/destroy" method="POST">
                                         <button class="btn btn-danger">X</button>
                                     </form>
                                     <form method="GET" action='/empleados/<%= empleado.legajo %>'>

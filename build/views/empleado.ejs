@@ -41,7 +41,7 @@
                             <%= empleado.sector %>
                         </td>
                         <td>
-                            <%= empleado.fechaIngreso %>
+                            <%= empleado.fecha_ingreso.toLocaleDateString() %>
                         </td>
                         <td>
                             <%= empleado.activo ? 'SI' : 'NO' %>
