@@ -13,8 +13,11 @@ var EmpleadoRouter = /** @class */ (function () {
     EmpleadoRouter.prototype.agregarRutas = function () {
         this.router.get('/empleados', EmpleadoControlador_js_1.default.getAll);
         this.router.get('/empleados/:legajo', EmpleadoControlador_js_1.default.getOne);
-        this.router.delete('/empleados/:legajo', EmpleadoControlador_js_1.default.borrar);
+        this.router.get('/crear', EmpleadoControlador_js_1.default.crear);
+        this.router.get('/empleados/:legajo/modificar', EmpleadoControlador_js_1.default.modificar);
+        this.router.post('/empleados/destroy', EmpleadoControlador_js_1.default.borrar);
         this.router.post('/empleados', EmpleadoControlador_js_1.default.create);
+        this.router.post('/empleados/update', EmpleadoControlador_js_1.default.update);
     };
     return EmpleadoRouter;
 }());

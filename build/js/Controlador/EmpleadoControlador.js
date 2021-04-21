@@ -97,7 +97,62 @@ var EmpleadoControlador = /** @class */ (function () {
             });
         });
     };
+    EmpleadoControlador.prototype.crear = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                res.render('formulario');
+                return [2 /*return*/];
+            });
+        });
+    };
+    EmpleadoControlador.prototype.modificar = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            var conexion, es, Legajo, Apellido, Nombre, Dni, Sector, Fecha, Activo, error_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, MySQL_js_1.default.connect()];
+                    case 1:
+                        conexion = _a.sent();
+                        return [4 /*yield*/, conexion.query('SELECT * FROM empleados WHERE legajo = ?', req.body.legajo)];
+                    case 2:
+                        es = _a.sent();
+                        if (es) {
+                            es.render('formulario', { empleado: es, opcion: 'Modificar' });
+                            Legajo = document.getElementsByName('Legajo');
+                            Apellido = document.getElementsByName('Apellido');
+                            Nombre = document.getElementsByName('Nombre');
+                            Dni = document.getElementsByName('Dni');
+                            Sector = document.getElementsByName('Sector');
+                            Fecha = document.getElementsByName('Fecha');
+                            Activo = document.getElementsByName('Activo');
+                            console.log(Legajo);
+                            console.log(Apellido);
+                            console.log(Nombre);
+                            console.log(Dni);
+                            console.log(Sector);
+                            console.log(Fecha);
+                            console.log(Activo);
+                        }
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_3 = _a.sent();
+                        console.error(error_3);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     EmpleadoControlador.prototype.create = function (req, res) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
+            });
+        });
+    };
+    EmpleadoControlador.prototype.update = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/];
@@ -106,7 +161,7 @@ var EmpleadoControlador = /** @class */ (function () {
     };
     EmpleadoControlador.prototype.borrar = function (req, res) {
         return __awaiter(this, void 0, void 0, function () {
-            var conexion, consulta, error_3;
+            var conexion, error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -114,18 +169,18 @@ var EmpleadoControlador = /** @class */ (function () {
                         return [4 /*yield*/, MySQL_js_1.default.connect()];
                     case 1:
                         conexion = _a.sent();
-                        return [4 /*yield*/, conexion.query('DELETE FROM empleados WHERE legajo = ?', req.params.legajo)];
+                        console.log(req.body);
+                        return [4 /*yield*/, conexion.query('DELETE FROM empleados WHERE legajo = ?', req.body.legajo)];
                     case 2:
-                        consulta = _a.sent();
+                        _a.sent();
+                        res.redirect('/empleados');
                         conexion.release();
                         return [3 /*break*/, 5];
                     case 3:
-                        error_3 = _a.sent();
-                        console.error(error_3);
+                        error_4 = _a.sent();
+                        console.error(error_4);
                         return [3 /*break*/, 5];
-                    case 4:
-                        res.redirect('/');
-                        return [7 /*endfinally*/];
+                    case 4: return [7 /*endfinally*/];
                     case 5: return [2 /*return*/];
                 }
             });
