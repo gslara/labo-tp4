@@ -15,7 +15,7 @@
     <main>
         <h1 class="text-center"><%= opcion %></h1>
         <div class="container d-flex justify-content-center">
-            <form class="form" action="/empleados/<% url %>">
+            <form class="form" action="/empleados/<%= url %>" method="POST">
                 <div class="my-1">
                     <input name="Legajo" class="form-control text-center" placeholder="Legajo" <% if(empleado){ %>
                     value="<%= empleado.legajo %>" <% } %> >

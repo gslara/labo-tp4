@@ -41,7 +41,7 @@ class EmpleadoControlador{
                     'SELECT * FROM empleados WHERE legajo = ?',
                     req.params.legajo
                 );
-            res.render('formulario', { empleado: es[0], opcion: 'Modificar', url:'modificar' });
+            res.render('formulario', { empleado: es[0], opcion: 'Modificar', url: `update` });
         }catch(error){
             console.error(error);
         }
@@ -52,7 +52,16 @@ class EmpleadoControlador{
     }
 
     async update(req: Request, res: Response) {
-
+        try{
+            let conexion = await mySQL.connect();
+            console.log(req.body.Legajo)
+            let query = `UPDATE empleados SET legajo = ${req.body.Legajo}, apellido = '${req.body.Apellido}', nombre = '${req.body.Nombre}', dni = ${req.body.Dni}, sector = '${req.body.Sector}', fecha_ingreso = NULL, activo = ${req.body.Activo} WHERE legajo = ${req.body.Legajo}`;
+            let es = await conexion.query(query);
+            await conexion.release();
+            res.redirect('/empleados');
+        }catch(error){
+            console.error(error);
+        }
     }
 
     async borrar(req : Request, res : Response){
